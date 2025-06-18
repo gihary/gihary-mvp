@@ -1,26 +1,26 @@
 # Gihary MVP
 
-This repository outlines a minimal setup for the **Gihary MVP**. The project is currently a stub and does not include Gmail integration, Firestore storage, or agent modules.
+This repository outlines a minimal setup for the **Gihary MVP**. It now
+includes basic Gmail integration, Firestore helpers and an onboarding wizard
+that stores client profiles.
 
 ## Features
 
 - **Gmail integration** – Connects to a Gmail account using OAuth to fetch emails.
 - **Task extraction via LLM** – Parses messages with a language model to generate actionable tasks.
 - **Firestore storage** – Persists tasks and related information in Google Firestore.
-- **Agent orchestration** – Coordinates multiple agents to respond to user requests and manage tasks.
-- **Contextual memory** – Maintains conversational context for more accurate responses.
-This README provides a high-level overview. Implementations of Gmail access, task extraction logic, and Firestore storage can be added in the `src/index.js` entry point.
+- **Onboarding wizard** – CLI prompts to collect client details.
+- **CRM module** – Saves onboarding results under `clients/{email}/profile` in Firestore.
 
-## Setup
+This README provides a high-level overview of the modules available in the `src/` directory.
+
+## Come iniziare
 
 1. **Node.js**
    - Install Node.js version **18 or higher**. The project requires Node
      18 or newer as defined in `package.json`.
-   - Clone this repository. The project currently has no external
-     dependencies because the Google AI Edge packages referenced in the
-     code have not yet been published.
-  - Run `npm install` anyway so that future dependencies can be installed
-    without changing these steps:
+   - Clone this repository.
+   - Run `npm install` to install dependencies:
     ```bash
     npm install
     ```
@@ -40,38 +40,41 @@ This README provides a high-level overview. Implementations of Gmail access, tas
      ```
 
 3. **Firestore configuration**
-   - Create a project in the Google Cloud Console and enable Firestore.
-   - Generate a service account JSON key file and set the path via the `GOOGLE_APPLICATION_CREDENTIALS` environment variable:
+   - Crea un progetto su Google Cloud e abilita Firestore.
+   - Ottieni le credenziali dell'account di servizio e imposta le variabili:
      ```bash
-     export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your-service-account.json"
+     export FIREBASE_PROJECT_ID="<id-progetto>"
+     export FIREBASE_CLIENT_EMAIL="<email-servizio>"
+     export FIREBASE_PRIVATE_KEY="<chiave-privata>"
      ```
 
 4. **Running the project**
-   - Ensure all environment variables above are configured. If you created a
-     `.env` file, they will be loaded automatically when the app starts.
-   - Start the application with Node.js:
+   - Ensure all environment variables above are configured. Copy `.env.sample`
+     to `.env` and fill in the placeholders.
+   - Avvia l'applicazione:
      ```bash
-     node src/index.js
+     npm start
      ```
+   - On first run the onboarding wizard collects your client details and stores
+     them in Firestore.
 
-## Example commands
+## Esempio di avvio
 ```bash
 npm install      # install dependencies
-node src/index.js    # run the project
+npm start        # avvia l'applicazione
 ```
 
 When the Google AI Edge packages become publicly available, add them to
 `package.json` and run `npm install` again to install the libraries.
 
-## Running tests
+## Come testare
 
-Run `npm install` before executing any tests or starting the application to
-ensure all dependencies are present:
+Assicurati di aver eseguito `npm install` prima dei test:
 
 ```bash
 npm install      # install dependencies once
 npm test         # run the test suite
 ```
 
-`node src/index.js` also requires the packages installed by `npm install`.
+`npm start` richiede le dipendenze installate con `npm install`.
 
