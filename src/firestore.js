@@ -16,14 +16,31 @@ function getFirestore() {
   if (firestore) return firestore;
 
   if (!admin.apps.length) {
-    const { FIREBASE_ADMIN_KEY_PATH } = process.env;
-    if (!FIREBASE_ADMIN_KEY_PATH) {
-      throw new Error('FIREBASE_ADMIN_KEY_PATH environment variable is required');
+    const {
+      FIREBASE_ADMIN_KEY_PATH,
+      FIREBASE_PROJECT_ID,
+      FIREBASE_CLIENT_EMAIL,
+      FIREBASE_PRIVATE_KEY,
+    } = process.env;
+
+    if (FIREBASE_ADMIN_KEY_PATH) {
+      const serviceAccount = require(FIREBASE_ADMIN_KEY_PATH);
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+      });
+    } else if (FIREBASE_PROJECT_ID && FIREBASE_CLIENT_EMAIL && FIREBASE_PRIVATE_KEY) {
+      admin.initializeApp({
+        credential: admin.credential.cert({
+          projectId: FIREBASE_PROJECT_ID,
+          clientEmail: FIREBASE_CLIENT_EMAIL,
+          privateKey: FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        }),
+      });
+    } else {
+      throw new Error(
+        'Firestore credentials are missing. Set FIREBASE_ADMIN_KEY_PATH or service account variables.',
+      );
     }
-    const serviceAccount = require(FIREBASE_ADMIN_KEY_PATH);
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-    });
   }
 
   firestore = admin.firestore();
