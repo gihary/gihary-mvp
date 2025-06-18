@@ -1,4 +1,4 @@
-const defaultPrompter = require('inquirer');
+const defaultPrompter = require('inquirer').default || require('inquirer');
 
 async function startOnboardingWizard(prompter = defaultPrompter) {
   const questions = [
