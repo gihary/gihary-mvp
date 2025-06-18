@@ -78,3 +78,18 @@ npm test         # run the test suite
 
 `npm start` richiede le dipendenze installate con `npm install`.
 
+## Script CLI utili
+
+```bash
+npm run debug      # controlla variabili .env e dipendenze
+npm run rollback -- --email=utente@example.com  # ripristina l'ultimo profilo
+```
+
+`npm run debug` verifica che tutte le variabili richieste siano presenti nel file
+`.env` e che i moduli necessari siano installati. Lancialo quando configuri un
+nuovo ambiente o se l'applicazione non parte correttamente.
+
+`npm run rollback` ripristina l'ultimo profilo salvato in Firestore per
+l'indirizzo specificato. È utile in caso di modifiche sbagliate o se vuoi
+tornare alla versione precedente dei dati di un cliente.
+
