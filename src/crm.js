@@ -1,4 +1,5 @@
 const { getFirestore } = require('./firestore');
+const { logEvent } = require('./logger');
 
 async function saveClientProfile(data) {
   const db = getFirestore();
@@ -11,8 +12,17 @@ async function saveClientProfile(data) {
     createdAt: Date.now(),
     source: 'onboarding-wizard',
   };
-  const docRef = db.collection('clients').doc(userId).collection('profile').doc('profile');
-  await docRef.set(payload);
+  const clientRef = db.collection('clients').doc(userId);
+  const profileRef = clientRef.collection('profile').doc('profile');
+
+  const snap = await profileRef.get();
+  if (snap.exists) {
+    const backupRef = clientRef.collection('backup').doc('profile');
+    await backupRef.set(snap.data());
+  }
+
+  await profileRef.set(payload);
+  await logEvent(userId, 'profile_saved');
   return payload;
 }
 
