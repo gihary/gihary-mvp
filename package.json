@@ -14,5 +14,7 @@
   "engines": {
     "node": ">=18"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@google-cloud/firestore": "^7.11.1"
+  }
 }
