@@ -1,6 +1,7 @@
 {
   "name": "gihary-mvp",
   "version": "1.0.0",
+  "description": "Demo Node.js project",
   "main": "src/index.js",
   "scripts": {
     "test": "node --test",
@@ -10,15 +11,11 @@
   "keywords": [],
   "author": "Gihary",
   "license": "MIT",
-  "description": "Demo Node.js project",
   "engines": {
-"engines": {
-  "node": ">=18"
-},
-"dependencies": {
-  "@google-ai-edge/litert-api": "^1.0.0",
-  "@google-ai-edge/ai-edge-apis": "^1.0.0"
-}
-
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@google-ai-edge/litert-api": "^1.0.0",
+    "@google-ai-edge/ai-edge-apis": "^1.0.0"
   }
 }
