@@ -13,5 +13,9 @@
   "description": "Demo Node.js project",
   "engines": {
     "node": ">=14"
+  },
+  "dependencies": {
+    "@google-ai-edge/litert-api": "^1.0.0",
+    "@google-ai-edge/ai-edge-apis": "^1.0.0"
   }
 }
