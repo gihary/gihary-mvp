@@ -1,7 +1,7 @@
-import test from 'node:test';
-import assert from 'node:assert';
-import { spawnSync } from 'node:child_process';
-import path from 'node:path';
+const test = require('node:test');
+const assert = require('node:assert');
+const { spawnSync } = require('node:child_process');
+const path = require('node:path');
 
 // Ensure that running the main module prints "Hello World"
 test('prints Hello World from main module', () => {
