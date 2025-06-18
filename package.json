@@ -15,7 +15,10 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@google-cloud/firestore": "^7.11.1",
     "dotenv": "^16.5.0",
-    "googleapis": "^150.0.1"
+    "googleapis": "^150.0.1",
+    "openai": "^5.5.1",
+    "firebase-admin": "^11.10.1"
   }
 }
