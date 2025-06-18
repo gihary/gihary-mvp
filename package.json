@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node --test",
     "start": "node src/index.js",
-    "testing": "npm test"
+    "testing": "npm test",
+    "rollback": "node src/cli/rollback-cli.js"
   },
   "keywords": [],
   "author": "Gihary",
