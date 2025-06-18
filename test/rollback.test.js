@@ -59,8 +59,23 @@ test('rollbackClientProfile copies backup to active profile', async () => {
   delete require.cache[require.resolve('../src/firestore')];
   const { setFirestore } = require('../src/firestore');
   setFirestore(fakeDb);
+  delete require.cache[require.resolve('../src/rollback')];
   const { rollbackClientProfile } = require('../src/rollback');
   await rollbackClientProfile('user@example.com');
   assert.deepStrictEqual(fakeDb.store['user@example.com'].profile, { fullName: 'Backup User' });
+});
+
+test('rollbackClientProfile throws when no backup exists', async () => {
+  const fakeDb = createFakeFirestore();
+  process.env.FIREBASE_ADMIN_KEY_PATH = path.resolve(__dirname, 'fixtures', 'serviceAccount.json');
+  delete require.cache[require.resolve('../src/firestore')];
+  const { setFirestore } = require('../src/firestore');
+  setFirestore(fakeDb);
+  delete require.cache[require.resolve('../src/rollback')];
+  const { rollbackClientProfile } = require('../src/rollback');
+  await assert.rejects(
+    rollbackClientProfile('user@example.com'),
+    /No backup found/,
+  );
 });
 
