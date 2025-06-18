@@ -12,6 +12,6 @@
   "license": "MIT",
   "description": "Demo Node.js project",
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   }
 }
