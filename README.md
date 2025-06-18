@@ -41,13 +41,13 @@ This repository outlines a minimal setup for the **Gihary MVP**, an application 
    - Ensure all environment variables above are configured.
    - Start the application with Node.js:
      ```bash
-     node index.js
+     node src/index.js
      ```
 
 ## Example commands
 ```bash
 npm install      # install dependencies
-node index.js    # run the project
+node src/index.js    # run the project
 ```
 
-This README provides a high-level overview. Implementations of Gmail access, task extraction logic, and Firestore storage can be added in the `index.js` entry point.
+This README provides a high-level overview. Implementations of Gmail access, task extraction logic, and Firestore storage can be added in the `src/index.js` entry point.
