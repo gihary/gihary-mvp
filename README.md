@@ -63,3 +63,15 @@ node src/index.js    # run the project
 When the Google AI Edge packages become publicly available, add them to
 `package.json` and run `npm install` again to install the libraries.
 
+## Running tests
+
+Run `npm install` before executing any tests or starting the application to
+ensure all dependencies are present:
+
+```bash
+npm install      # install dependencies once
+npm test         # run the test suite
+```
+
+`node src/index.js` also requires the packages installed by `npm install`.
+
