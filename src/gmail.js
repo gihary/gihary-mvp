@@ -23,8 +23,15 @@ function getOAuth2Client() {
     GMAIL_REFRESH_TOKEN,
   } = process.env;
 
-  if (!GMAIL_CLIENT_ID || !GMAIL_CLIENT_SECRET || !GMAIL_REDIRECT_URI) {
-    throw new Error('Missing Gmail OAuth environment variables');
+  const missing = [];
+  if (!GMAIL_CLIENT_ID) missing.push('GMAIL_CLIENT_ID');
+  if (!GMAIL_CLIENT_SECRET) missing.push('GMAIL_CLIENT_SECRET');
+  if (!GMAIL_REDIRECT_URI) missing.push('GMAIL_REDIRECT_URI');
+  if (missing.length > 0) {
+    const plural = missing.length > 1 ? 'variables' : 'variable';
+    throw new Error(
+      `Missing Gmail OAuth ${plural}: ${missing.join(', ')}`,
+    );
   }
 
   const oauth2Client = new google.auth.OAuth2(
