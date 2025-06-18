@@ -19,11 +19,14 @@ This README provides a high-level overview. Implementations of Gmail access, tas
    - Clone this repository. The project currently has no external
      dependencies because the Google AI Edge packages referenced in the
      code have not yet been published.
-   - Run `npm install` anyway so that future dependencies can be installed
-     without changing these steps:
-     ```bash
-     npm install
-     ```
+  - Run `npm install` anyway so that future dependencies can be installed
+    without changing these steps:
+    ```bash
+    npm install
+    ```
+  - Copy `.env.sample` to `.env` and fill in your environment variables. The
+    project uses [dotenv](https://www.npmjs.com/package/dotenv) to load
+    this file automatically.
 
 2. **Gmail OAuth configuration**
    - Create OAuth credentials in the [Google Cloud Console](https://console.cloud.google.com/).
@@ -44,7 +47,8 @@ This README provides a high-level overview. Implementations of Gmail access, tas
      ```
 
 4. **Running the project**
-   - Ensure all environment variables above are configured.
+   - Ensure all environment variables above are configured. If you created a
+     `.env` file, they will be loaded automatically when the app starts.
    - Start the application with Node.js:
      ```bash
      node src/index.js
