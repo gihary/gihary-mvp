@@ -13,7 +13,8 @@ This repository outlines a minimal setup for the **Gihary MVP**, an application 
 ## Setup
 
 1. **Node.js**
-   - Install Node.js version **18 or higher**.
+   - Install Node.js version **18 or higher**. The project requires Node
+     18 or newer as defined in `package.json`.
    - Clone this repository and install dependencies:
      ```bash
      npm install
