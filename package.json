@@ -7,7 +7,8 @@
     "test": "node --test",
     "start": "node src/index.js",
     "testing": "npm test",
-    "rollback": "node src/cli/rollback-cli.js"
+    "rollback": "node src/cli/rollback-cli.js",
+    "debug": "node src/debugger.js"
   },
   "keywords": [],
   "author": "Gihary",
