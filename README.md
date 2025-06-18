@@ -16,7 +16,11 @@ This README provides a high-level overview. Implementations of Gmail access, tas
 1. **Node.js**
    - Install Node.js version **18 or higher**. The project requires Node
      18 or newer as defined in `package.json`.
-   - Clone this repository and install dependencies:
+   - Clone this repository. The project currently has no external
+     dependencies because the Google AI Edge packages referenced in the
+     code have not yet been published.
+   - Run `npm install` anyway so that future dependencies can be installed
+     without changing these steps:
      ```bash
      npm install
      ```
@@ -51,4 +55,7 @@ This README provides a high-level overview. Implementations of Gmail access, tas
 npm install      # install dependencies
 node src/index.js    # run the project
 ```
+
+When the Google AI Edge packages become publicly available, add them to
+`package.json` and run `npm install` again to install the libraries.
 
