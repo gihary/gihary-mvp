@@ -1,6 +1,6 @@
 # Gihary MVP
 
-This repository outlines a minimal setup for the **Gihary MVP**, an application that connects to Gmail, extracts tasks using a large language model (LLM), and stores the results in Firestore. Agents are orchestrated to process user requests while keeping contextual memory of conversations.
+This repository outlines a minimal setup for the **Gihary MVP**. The project is currently a stub and does not include Gmail integration, Firestore storage, or agent modules.
 
 ## Features
 
@@ -9,6 +9,7 @@ This repository outlines a minimal setup for the **Gihary MVP**, an application 
 - **Firestore storage** – Persists tasks and related information in Google Firestore.
 - **Agent orchestration** – Coordinates multiple agents to respond to user requests and manage tasks.
 - **Contextual memory** – Maintains conversational context for more accurate responses.
+This README provides a high-level overview. Implementations of Gmail access, task extraction logic, and Firestore storage can be added in the `src/index.js` entry point.
 
 ## Setup
 
@@ -51,4 +52,3 @@ npm install      # install dependencies
 node src/index.js    # run the project
 ```
 
-This README provides a high-level overview. Implementations of Gmail access, task extraction logic, and Firestore storage can be added in the `src/index.js` entry point.
