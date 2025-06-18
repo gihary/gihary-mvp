@@ -1,59 +1,46 @@
 # Gihary MVP
 
-This repository outlines a minimal setup for the **Gihary MVP**. The project is currently a stub and does not include Gmail integration, Firestore storage, or agent modules.
+This repository contains a small proof of concept for the **Gihary MVP**. The codebase is intentionally minimal and focuses on showing how future pieces will fit together. Most modules are placeholders, but a few basic utilities and tests are already implemented.
 
-## Features
+## Implemented features
 
-- **Gmail integration** – Connects to a Gmail account using OAuth to fetch emails.
-- **Task extraction via LLM** – Parses messages with a language model to generate actionable tasks.
-- **Firestore storage** – Persists tasks and related information in Google Firestore.
-- **Agent orchestration** – Coordinates multiple agents to respond to user requests and manage tasks.
-- **Contextual memory** – Maintains conversational context for more accurate responses.
-This README provides a high-level overview. Implementations of Gmail access, task extraction logic, and Firestore storage can be added in the `src/index.js` entry point.
+The project is mostly scaffolding, but a few pieces are already wired up:
+
+- **Hello World entry point** – `src/index.js` simply prints `"Hello World"` when run.
+- **Edge task generation stub** – `generateTasksViaEdge()` in `src/edge/edgeInference.js` returns a sample task list so other modules can be tested.
+- **Node test suite** – Tests under `test/` verify the entry point and the edge task generator using Node's built‑in test runner.
+
+Modules for Gmail access, Firestore storage and agent orchestration exist as placeholders and can be expanded later.
 
 ## Setup
 
-1. **Node.js**
-   - Install Node.js version **18 or higher**. The project requires Node
-     18 or newer as defined in `package.json`.
-   - Clone this repository. The project currently has no external
-     dependencies because the Google AI Edge packages referenced in the
-     code have not yet been published.
-   - Run `npm install` anyway so that future dependencies can be installed
-     without changing these steps:
+1. **Install dependencies**
+   - Use Node.js **18 or higher** as defined in `package.json`.
+   - After cloning the repository run:
      ```bash
      npm install
      ```
 
-2. **Gmail OAuth configuration**
-   - Create OAuth credentials in the [Google Cloud Console](https://console.cloud.google.com/).
-   - Enable the Gmail API and download your OAuth client ID and secret.
-   - Provide the redirect URI for local development (e.g., `http://localhost:3000/oauth2callback`).
-   - Store the credentials in an environment file or pass them as environment variables:
-     ```bash
-     export GMAIL_CLIENT_ID="<your-client-id>"
-     export GMAIL_CLIENT_SECRET="<your-client-secret>"
-     export GMAIL_REDIRECT_URI="<your-redirect-uri>"
-     ```
+2. **Configure environment variables**
+   - Copy `.env.sample` to `.env` and fill in the values for your environment.  The `.env` file is ignored by Git and stores credentials such as Gmail OAuth keys, Firestore config and AI API keys.
 
-3. **Firestore configuration**
-   - Create a project in the Google Cloud Console and enable Firestore.
-   - Generate a service account JSON key file and set the path via the `GOOGLE_APPLICATION_CREDENTIALS` environment variable:
-     ```bash
-     export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your-service-account.json"
-     ```
-
-4. **Running the project**
-   - Ensure all environment variables above are configured.
+3. **Run the project**
    - Start the application with Node.js:
      ```bash
      node src/index.js
+     ```
+
+4. **Run tests**
+   - Execute the test suite with:
+     ```bash
+     npm test
      ```
 
 ## Example commands
 ```bash
 npm install      # install dependencies
 node src/index.js    # run the project
+npm test         # run the test suite
 ```
 
 When the Google AI Edge packages become publicly available, add them to
